@@ -1,174 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Personal Task Manager</title>
+# Personal Task Manager
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            padding: 30px;
-        }
+A simple Personal Task Manager developed using Laravel.
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-        }
+## Project Code
 
-        h1 {
-            text-align: center;
-        }
+WST21-PM-2026-SF
 
-        .add-button {
-            display: inline-block;
-            background: #2563eb;
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
+## Student Name
 
-        table {
-            width: 100%;
-            background: white;
-            border-collapse: collapse;
-        }
+NAME: giv hurt ardimer
 
-        th, td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
+## Course & Year
 
-        th {
-            background: #eee;
-        }
+COURSE: BSIT AND YEAR: 2ND
 
-        .button {
-            padding: 6px 10px;
-            text-decoration: none;
-            border-radius: 4px;
-        }
+## Database Used
 
-        .edit {
-            background: #f59e0b;
-            color: white;
-        }
+MySQL
 
-        .delete {
-            background: #dc2626;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+## Technologies Used
 
-        .success {
-            background: #d1fae5;
-            padding: 10px;
-            margin-bottom: 15px;
-        }
-    </style>
-</head>
+- Laravel
+- PHP
+- MySQL
+- Blade
+- HTML
+- CSS
 
-<body>
+## Features
 
-<div class="container">
+- Add Task
+- View Tasks
+- Edit Task
+- Delete Task
+- Update Status
 
-    <h1>Personal Task Manager</h1>
+## Description
 
-    @if(session('success'))
-        <div class="success">
-            {{ session('success') }}
-        </div>
-    @endif
+This project is a simple Personal Task Manager that allows users
+to create, view, edit, delete, and update the status of tasks.
 
-    <a href="{{ route('tasks.create') }}" class="add-button">
-        + Add Task
-    </a>
+## Database Fields
 
-    <table>
+The tasks table contains:
 
-        <thead>
-            <tr>
-                <th>Task</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Due Date</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-        @forelse($tasks as $task)
-
-            <tr>
-
-                <td>
-                    {{ $task->task_name }}
-                </td>
-
-                <td>
-                    {{ $task->description }}
-                </td>
-
-                <td>
-                    {{ $task->status }}
-                </td>
-
-                <td>
-                    {{ $task->due_date?->format('M d, Y') }}
-                </td>
-
-                <td>
-
-                    <a
-                        href="{{ route('tasks.edit', $task) }}"
-                        class="button edit"
-                    >
-                        Edit
-                    </a>
-
-                    <form
-                        action="{{ route('tasks.destroy', $task) }}"
-                        method="POST"
-                        style="display:inline;"
-                    >
-
-                        @csrf
-                        @method('DELETE')
-
-                        <button
-                            type="submit"
-                            class="button delete"
-                            onclick="return confirm('Delete this task?')"
-                        >
-                            Delete
-                        </button>
-
-                    </form>
-
-                </td>
-
-            </tr>
-
-        @empty
-
-            <tr>
-                <td colspan="5">
-                    No tasks found.
-                </td>
-            </tr>
-
-        @endforelse
-
-        </tbody>
-
-    </table>
-
-</div>
-
-</body>
-</html>
+- id
+- task_name
+- description
+- status
+- due_date
+- created_at
+- updated_at
